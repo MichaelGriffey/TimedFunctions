@@ -12,8 +12,8 @@
     <Company>homesickanvil.com</Company>
     <Description>Lightweight .NET helper to run synchronous or asynchronous functions with configurable timeouts and cancellation support.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/yourusername/TimedFunction</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/yourusername/TimedFunction</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/MichaelGriffey/TimedFunctions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MichaelGriffey/TimedFunctions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>timeout task cancellation async await utility</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
