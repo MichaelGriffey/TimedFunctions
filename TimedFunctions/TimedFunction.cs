@@ -1,8 +1,7 @@
 ﻿namespace TimedFunctions;
 
 /// <summary>
-/// Provides static helper methods to execute synchronous or asynchronous functions
-/// with a timeout, optional cancellation, and flexible support for multiple input parameters.
+/// Provides methods to execute synchronous or asynchronous functions with a timeout, optional cancellation, and flexible support for multiple input parameters.
 /// </summary>
 public static class TimedFunction
 {
@@ -16,6 +15,8 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
     /// <returns>A task representing the asynchronous execution of the function, returning its result.</returns>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
+    /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static Task Execute<TResult>(
         Func<Task> func,
         int timeoutSeconds,
@@ -30,6 +31,8 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
     /// <returns>A task representing the asynchronous execution of the function, returning its result.</returns>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
+    /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static Task<TResult> Execute<TResult>(
         Func<Task<TResult>> func,
         int timeoutSeconds,
@@ -46,6 +49,8 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
     /// <returns>A task representing the asynchronous execution of the function, returning its result.</returns>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
+    /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static Task<TResult> Execute<TInput, TResult>(
         Func<TInput, TResult> func,
         TInput input,
@@ -63,6 +68,8 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
     /// <returns>A task representing the asynchronous execution of the function, returning its result.</returns>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
+    /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static Task<TResult> Execute<TInput, TResult>(
         Func<TInput, CancellationToken, TResult> func,
         TInput input,
@@ -81,6 +88,7 @@ public static class TimedFunction
     /// <param name="args">Parameters to pass into the function.</param>
     /// <returns>A task representing the asynchronous execution of the function, returning its result.</returns>
     /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
+    /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static Task<TResult> Execute<TResult>(
         Func<object[], TResult> func,
         int timeoutSeconds,
@@ -169,7 +177,7 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout duration in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token to cancel before timeout.</param>
     /// <returns>The result of the task if it completes within the timeout.</returns>
-    /// <exception cref="TimeoutException">Thrown if the task does not complete before the timeout elapses.</exception>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
     /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static async Task<TResult> ExecuteAsync<TResult>(
         Task<TResult> task,
@@ -188,7 +196,7 @@ public static class TimedFunction
     /// <param name="timeoutSeconds">Timeout duration in seconds.</param>
     /// <param name="cancellationToken">Optional cancellation token to cancel before timeout.</param>
     /// <returns>void if it completes within the timeout.</returns>
-    /// <exception cref="TimeoutException">Thrown if the task does not complete before the timeout elapses.</exception>
+    /// <exception cref="TimeoutException">Thrown if the function takes longer than <paramref name="timeoutSeconds"/>.</exception>
     /// <exception cref="OperationCanceledException">Thrown if the provided cancellation token requests cancellation.</exception>
     public static async Task ExecuteAsync(
         Task task,
