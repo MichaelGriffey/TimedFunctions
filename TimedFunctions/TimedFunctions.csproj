@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- ✅ NuGet Metadata -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>TimedFunction</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Michael Aaron Griffey</Authors>
+    <Company>homesickanvil.com</Company>
+    <Description>Lightweight .NET helper to run synchronous or asynchronous functions with configurable timeouts and cancellation support.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/yourusername/TimedFunction</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yourusername/TimedFunction</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>timeout task cancellation async await utility</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+</Project>
